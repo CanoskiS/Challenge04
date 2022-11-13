@@ -1,0 +1,91 @@
+@use "../abstracts/mixins" as mix;
+@use "../abstracts/variables" as var;
+@use "sass:math";
+
+  .navbar {
+    position: fixed;
+    height: 100vh;
+    width: 20%;
+    background-color: (var.$background-color-base);
+    
+
+    .inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      @extend %section;
+      @extend %wrap;
+    }
+
+    a {
+      text-decoration: none;
+      color: (var.$text-color-base);
+    }
+
+    i {
+      display: none;
+    }
+
+    .footer a {
+      font-weight: (var.$font-weight-bold);
+    }
+
+    .menu img {
+      margin-bottom: (var.$gutter-base);
+    }
+
+    .menu ul {
+      list-style-type: none;
+      line-height: (var.$line-height-base);
+      padding: 0;
+    }
+
+    .menu a {
+      text-decoration: none;
+    }
+
+    li:not(last-child){
+        margin-bottom: math.div(var.$gutter-base ,2);
+    }
+
+    @include mix.tablet-styles {
+
+      & {
+        
+        left: 0;
+        right: 0;
+        top: 0 ;
+        height: 100%;
+        width: 100%;
+        position: static;
+      }
+
+      .inner{
+        flex-direction: row;
+        padding: math.div(var.$gutter-base, 2.5);
+      }
+
+      .menu ul {
+        display: none;
+      }
+
+      .footer {
+        display: none;
+      }
+
+      i {
+        display: block;
+        border: 1px solid silver;
+        padding: math.div(var.$gutter-base, 6);
+      }
+
+      .menu img {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+ 
+
+
